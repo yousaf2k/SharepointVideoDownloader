@@ -1,0 +1,44 @@
+﻿<Window x:Class="Sharepoint_Video_Downloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sharepoint_Video_Downloader"
+        mc:Ignorable="d"
+        Title="Sharepoint Video Downloader" Height="500" Width="900">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Content="Download Path:" />
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0" x:Name="txtDownloadPath" Text="{Binding DownloadPath, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Video URL(videomanifest):" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0" x:Name="txtUrl" Text="{Binding VideoUrl, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Grid.Row="1" Grid.Column="2" Content="Get" Width="80" Margin="5,0" Command="{Binding GetCommand}" />
+
+        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Video Stream:" />
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5,4" ItemsSource="{Binding VideoStreams}" DisplayMemberPath="DisplayText" SelectedValuePath="Value" SelectedValue="{Binding SelectedVideoIndex, Mode=TwoWay}" />
+
+        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="Audio Stream:" />
+        <ComboBox Grid.Row="3" Grid.Column="1" Margin="5,4" ItemsSource="{Binding AudioStreams}" DisplayMemberPath="DisplayText" SelectedValuePath="Value" SelectedValue="{Binding SelectedAudioIndex, Mode=TwoWay}" />
+
+        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Content="FFmpeg Cmd:" />
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5,4" Text="{Binding FfmpgCmd}" x:Name="txt_ffmpg" />
+        <Button Grid.Row="4" Grid.Column="2" Content="Download video" Width="120" Margin="5,4" Command="{Binding DownloadCommand}" />
+
+        <TextBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,5,0" Text="{Binding Log}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" HorizontalScrollBarVisibility="Auto" x:Name="txtLog" TextChanged="txtLog_TextChanged"/>
+        <Button Grid.Row="5" Grid.Column="2" Content="Clear Log" Width="100" Margin="5,10,0,0" Command="{Binding ClearLogCommand}" VerticalAlignment="Top" />
+    </Grid>
+</Window>
