@@ -1,4 +1,12 @@
-﻿This is a WPF application, Implement MVVM model in C# .net 8.0.
+#Sharepoint Video Downloader
+##Instructions:
+1) Open video from SharePoint account or Teams OneDrive etc.,
+2) In Chrome open Web inspector by pressing F12 then click Network tab then in filter enter videomanifest
+3) In url list at bottom of filter check videomanifest and right click and copy this url
+<img width="431" height="305" alt="image" src="https://github.com/user-attachments/assets/47440b23-04a9-46a8-91af-95ca56fb9a49" />
+
+#AI Prompt to create this Application. (Some tweeks done after the AI prompt I tried to update the AI prompt with those tweeks.)
+ This is a WPF application, Implement MVVM model in C# .net 8.0.
 Application name is "Sharepoint Video Downloader".
 1.	create a label and textbox for download path at the top of the page. by default set it to "C:\Downloads", remember the last path and load it when application launch.
 2.	create a button named "Get". when user press the get button build a string in following format. ffprobe -i  "{0}" -show_streams replacing {0} with text url value and truncate the value after format=dash& remove the & also.
